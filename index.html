@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master Forex Fundamental Analysis through an interactive, gamified learning experience. 12 chapters covering economic indicators, central banks, risk sentiment, and more.">
+  <title>Forex FA Mastery — Gamified Learning</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+</head>
+<body>
+
+<div id="app">
+  <!-- Mobile Toggle -->
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle sidebar">☰</button>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <div class="logo-icon">📈</div>
+        <h1>FA Mastery</h1>
+      </div>
+      <div class="player-info">
+        <div class="player-level">
+          <span class="level-badge" id="levelBadge">LVL 1</span>
+          <span class="level-title" id="levelTitle">Rookie Trader</span>
+        </div>
+        <div class="xp-bar-container">
+          <div class="xp-bar-fill" id="xpBarFill" style="width: 0%"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="xp-text" id="xpText">0 / 600 XP</span>
+          <span class="streak-badge" id="streakBadge">🔥 0 day streak</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="chapter-list" id="chapterList">
+      <!-- Populated by JS -->
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="badges-btn" id="badgesBtn">
+        🏆 Achievements
+        <span class="badge-count" id="badgeCount">0 / 17</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-content" id="mainContent">
+    <!-- Dynamically rendered: home screen, chapter view, etc. -->
+  </main>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Quiz Modal -->
+<div class="modal-overlay" id="quizModal">
+  <div class="modal">
+    <div id="quizContent">
+      <!-- Populated by quiz.js -->
+    </div>
+  </div>
+</div>
+
+<!-- Badge Modal -->
+<div class="modal-overlay" id="badgeModal">
+  <div class="modal">
+    <h2 style="margin-bottom:1.5rem;display:flex;align-items:center;gap:0.5rem">🏆 Achievements</h2>
+    <div class="badge-grid" id="badgeGrid">
+      <!-- Populated by JS -->
+    </div>
+    <div class="text-center mt-lg">
+      <button class="btn-secondary" id="closeBadgeModal">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/content.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
