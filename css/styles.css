@@ -495,11 +495,11 @@ a:hover {
   margin: 0 auto var(--space-xl);
 }
 
-.home-stats {
+.stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
-  margin: var(--space-2xl) 0;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-xl) 0;
 }
 
 .stat-card {
@@ -507,7 +507,7 @@ a:hover {
   border: 1px solid var(--border-glass);
   backdrop-filter: blur(20px);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
+  padding: var(--space-md);
   text-align: center;
   transition: all var(--transition-base);
 }
@@ -519,19 +519,19 @@ a:hover {
 }
 
 .stat-icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: var(--space-sm);
 }
 
 .stat-value {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--text-primary);
   font-family: 'JetBrains Mono', monospace;
 }
 
 .stat-label {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1615,7 +1615,7 @@ a:hover {
     font-size: 2rem;
   }
 
-  .home-stats {
+  .stats-grid {
     grid-template-columns: 1fr;
   }
 
