@@ -925,33 +925,52 @@ a:hover {
   margin: var(--space-lg) 0;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-glass);
+  background: rgba(15, 23, 42, 0.3);
+  box-shadow: var(--shadow-sm);
 }
 
 .lesson-section table {
   width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9rem;
+  width: 100%;
 }
 
 .lesson-section thead th {
-  background: var(--bg-tertiary);
-  padding: var(--space-sm) var(--space-md);
+  background: rgba(15, 23, 42, 0.6);
+  padding: var(--space-md) var(--space-lg);
   text-align: left;
   font-weight: 700;
   color: var(--accent-emerald-light);
-  border-bottom: 2px solid var(--accent-emerald-dark);
+  border-bottom: 1px solid var(--border-glass);
   white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+
+.lesson-section tbody tr {
+  transition: all var(--transition-fast);
+}
+
+.lesson-section tbody tr:nth-child(even) {
+  background: rgba(30, 41, 59, 0.3);
 }
 
 .lesson-section tbody td {
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-md) var(--space-lg);
   border-bottom: 1px solid var(--border-glass);
   color: var(--text-secondary);
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .lesson-section tbody tr:hover {
-  background: var(--bg-glass);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.lesson-section tbody tr:hover td {
+  color: var(--text-primary);
 }
 
 .lesson-section tbody tr:last-child td {
@@ -1069,71 +1088,138 @@ a:hover {
   font-weight: 700;
 }
 
-/* ── Chapter Navigation ── */
-.chapter-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-xl) 0;
-  margin-top: var(--space-2xl);
+/* ── Chapter Navigation Footer ── */
+.chapter-footer {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-xl);
   border-top: 1px solid var(--border-glass);
-  gap: var(--space-md);
 }
 
-.nav-btn {
-  display: flex;
+.chapter-actions {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--space-xl);
   align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-lg);
+}
+
+.nav-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-md) var(--space-lg);
   background: var(--bg-card);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-md);
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  font-weight: 600;
+  text-align: left;
   cursor: pointer;
   transition: all var(--transition-base);
-  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  min-height: 80px;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.nav-btn:hover {
-  background: rgba(16, 185, 129, 0.1);
-  border-color: var(--accent-emerald-dark);
-  color: var(--text-primary);
-  transform: translateX(2px);
+.nav-card.prev {
+  text-align: left;
+  padding-left: var(--space-xl);
 }
 
-.nav-btn.prev:hover {
-  transform: translateX(-2px);
+.nav-card.next {
+  text-align: right;
+  padding-right: var(--space-xl);
 }
 
-.nav-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  transform: none !important;
-}
-
-.quiz-start-btn {
-  padding: var(--space-md) var(--space-2xl);
-  background: var(--gradient-main);
-  border: none;
-  border-radius: var(--radius-full);
-  color: var(--bg-primary);
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all var(--transition-base);
-  font-family: 'Inter', sans-serif;
-  box-shadow: var(--shadow-glow);
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  margin: var(--space-xl) auto;
-}
-
-.quiz-start-btn:hover {
+.nav-card:hover {
+  border-color: var(--accent-emerald);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-card .nav-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  font-weight: 600;
+  display: block;
+}
+
+.nav-card .nav-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Arrow Icons for Cards */
+.nav-card.prev::before {
+  content: '←';
+  position: absolute;
+  left: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--accent-emerald);
+  transition: transform var(--transition-base);
+}
+
+.nav-card.next::after {
+  content: '→';
+  position: absolute;
+  right: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--accent-emerald);
+  transition: transform var(--transition-base);
+}
+
+.nav-card:hover::before {
+  transform: translate(-4px, -50%);
+}
+
+.nav-card:hover::after {
+  transform: translate(4px, -50%);
+}
+
+/* Center Call-to-Action (Quiz) */
+.btn-quiz {
+  padding: var(--space-md) var(--space-2xl);
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  min-width: 180px;
+  justify-content: center;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .chapter-actions {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    display: flex;
+    flex-direction: column-reverse;
+    /* Put next/prev below quiz */
+  }
+
+  .nav-card {
+    width: 100%;
+    text-align: center !important;
+    padding: var(--space-md) !important;
+  }
+
+  .nav-card.prev::before,
+  .nav-card.next::after {
+    display: none;
+  }
+
+  .btn-quiz {
+    width: 100%;
+  }
 }
 
 /* ── Quiz Modal ── */

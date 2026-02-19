@@ -270,11 +270,27 @@ const App = (() => {
             </div>
           ` : ''}
           <div class="chapter-actions">
-            ${id > 1 ? `<button class="btn-secondary" onclick="App.navigate('chapter', ${id - 1})">← Previous Chapter</button>` : '<div></div>'}
+            ${id > 1 ? (() => {
+        const prevChapter = CHAPTERS.find(c => c.id === id - 1);
+        return `
+              <button class="nav-card prev" onclick="App.navigate('chapter', ${id - 1})">
+                <span class="nav-label">Previous</span>
+                <span class="nav-title">${prevChapter ? prevChapter.title : 'Chapter ' + (id - 1)}</span>
+              </button>`;
+      })() : '<div></div>'}
+            
             <button class="btn-primary btn-quiz" onclick="App.startQuiz(${id})">
               ${completed ? '🔄 Retake Quiz' : '📝 Take Quiz'}
             </button>
-            ${id < CHAPTERS.length ? `<button class="btn-secondary" onclick="App.navigate('chapter', ${id + 1})">Next Chapter →</button>` : '<div></div>'}
+            
+            ${id < CHAPTERS.length ? (() => {
+        const nextChapter = CHAPTERS.find(c => c.id === id + 1);
+        return `
+              <button class="nav-card next" onclick="App.navigate('chapter', ${id + 1})">
+                <span class="nav-label">Next</span>
+                <span class="nav-title">${nextChapter ? nextChapter.title : 'Chapter ' + (id + 1)}</span>
+              </button>`;
+      })() : '<div></div>'}
           </div>
         </div>
       </div>
