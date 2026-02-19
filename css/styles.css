@@ -922,51 +922,87 @@ a:hover {
 /* Tables */
 .table-wrapper {
   overflow-x: auto;
-  margin: var(--space-lg) 0;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-glass);
-  background: rgba(15, 23, 42, 0.3);
-  box-shadow: var(--shadow-sm);
+  margin: var(--space-xl) 0;
+  border-radius: var(--radius-lg, 16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.3) 100%);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
 }
 
 .lesson-section table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0;
+  border-spacing: 0 2px;
   font-size: 0.9rem;
-  width: 100%;
 }
 
 .lesson-section thead th {
-  background: rgba(15, 23, 42, 0.6);
-  padding: var(--space-md) var(--space-lg);
+  background: rgba(15, 23, 42, 0.9);
+  padding: 1.1rem 1.75rem;
   text-align: left;
   font-weight: 700;
   color: var(--accent-emerald-light);
-  border-bottom: 1px solid var(--border-glass);
+  border-bottom: 2px solid rgba(16, 185, 129, 0.25);
   white-space: nowrap;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  position: relative;
+}
+
+/* Subtle column divider in header */
+.lesson-section thead th:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lesson-section thead th:last-child {
+  border-right: none;
 }
 
 .lesson-section tbody tr {
   transition: all var(--transition-fast);
 }
 
+/* Stronger alternating row stripes */
+.lesson-section tbody tr:nth-child(odd) {
+  background: rgba(15, 23, 42, 0.2);
+}
+
 .lesson-section tbody tr:nth-child(even) {
-  background: rgba(30, 41, 59, 0.3);
+  background: rgba(30, 41, 59, 0.55);
 }
 
 .lesson-section tbody td {
-  padding: var(--space-md) var(--space-lg);
-  border-bottom: 1px solid var(--border-glass);
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   color: var(--text-secondary);
-  vertical-align: middle;
+  vertical-align: top;
+  line-height: 1.8;
+}
+
+/* Subtle column divider in body cells */
+.lesson-section tbody td:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.lesson-section tbody td:last-child {
+  border-right: none;
+}
+
+/* First column bold text gets accent color */
+.lesson-section tbody td:first-child strong {
+  color: var(--text-primary);
 }
 
 .lesson-section tbody tr:hover {
-  background: rgba(16, 185, 129, 0.05);
+  background: rgba(16, 185, 129, 0.1);
 }
 
 .lesson-section tbody tr:hover td {
