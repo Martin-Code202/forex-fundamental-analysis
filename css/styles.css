@@ -592,13 +592,12 @@ a:hover {
 .progress-section {
   text-align: center;
   max-width: 600px;
-  margin: var(--space-3xl) auto var(--space-2xl);
-  /* Increased top margin */
-  padding: var(--space-lg);
-  background: var(--bg-card);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-lg);
-  backdrop-filter: blur(12px);
+  margin: var(--space-3xl) auto 0;
+  padding: var(--space-lg) var(--space-lg) 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  backdrop-filter: none;
 }
 
 .progress-section h2 {
@@ -640,7 +639,7 @@ a:hover {
 }
 
 .quest-section {
-  padding: var(--space-xl) 0;
+  padding: 0 0 var(--space-xl);
   position: relative;
   max-width: 600px;
   margin: 0 auto;
@@ -652,14 +651,15 @@ a:hover {
   flex-direction: column;
   align-items: center;
   gap: var(--space-3xl);
-  padding: var(--space-2xl) 0;
+  padding: var(--space-xl) 0;
 }
 
 /* Vertical line connecting nodes */
 .quest-map::before {
   content: '';
   position: absolute;
-  top: 50px;
+  top: -20px;
+  /* Extend up to connect with title */
   bottom: 50px;
   left: 50%;
   width: 4px;
